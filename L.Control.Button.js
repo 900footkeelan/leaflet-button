@@ -3,7 +3,7 @@
 L.Control.Button = L.Control.extend({
     includes: L.Mixin.Events,
     options: {
-        position: 'topright',
+        position: 'topright'
     },
     initialize: function (label, options) {
         L.setOptions(this, options);
@@ -15,7 +15,8 @@ L.Control.Button = L.Control.extend({
                 button.parentNode.removeChild(button);
             } catch (e) { }
         } else if (typeof label === "string") {
-            button = L.DomUtil.create('button', this.options.className)
+            button = L.DomUtil.create('button', this.options.className);
+            button.textContent = label;
         } else {
             throw new Error('L.Control.Button: failed to initialize, label must either be text or a dom element');
         }
@@ -49,7 +50,7 @@ L.Control.Button = L.Control.extend({
                       .on(this._container, 'touchstart', stop)
                       .on(this._container, 'dblclick', stop)
                       .on(this._container, 'mousewheel', stop)
-                      .on(this._container, 'MozMozMousePixelScroll', stop)
+                      .on(this._container, 'MozMozMousePixelScroll', stop);
             this.fire('load');
 
             this._map = map;
@@ -64,7 +65,7 @@ L.Control.Button = L.Control.extend({
                       .off(this._container, 'touchstart', stop)
                       .off(this._container, 'dblclick', stop)
                       .off(this._container, 'mousewheel', stop)
-                      .off(this._container, 'MozMozMousePixelScroll', stop)
+                      .off(this._container, 'MozMozMousePixelScroll', stop);
 
             this.fire('unload');
             this._map = null;
